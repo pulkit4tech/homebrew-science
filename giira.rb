@@ -1,4 +1,5 @@
 class Giira < Formula
+  desc "RNA-Seq driven gene finding incorporating ambiguous reads"
   homepage "https://sourceforge.net/projects/giira/"
   url "https://downloads.sourceforge.net/project/giira/GIIRA_01_3.zip"
   sha256 "3caecf4297bf219b006094d7a2a1510f07c2c32223add482a405089699b64bb2"
@@ -21,6 +22,6 @@ class Giira < Formula
       @scer_part1_c15.000000000 contig=lcl|NC_001136.10_cdsid_NP_010096.1
       CAATTTTTCGCATTCGCCATGGACTTCCTTTTCACCCCTGCTTGGTTCAA
     EOS
-    assert `#{bin}/GIIRA -iG test.fasta -iR test.fastq -opti glpk`.include?("finished")
+    assert_match `#{bin}/GIIRA -iG test.fasta -iR test.fastq -opti glpk`, "finished"
   end
 end
